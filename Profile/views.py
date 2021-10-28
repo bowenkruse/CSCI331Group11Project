@@ -1,14 +1,14 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-
+from course.models import Course
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 
 User = get_user_model()
 
 
 # Create your views here.
-@login_required()
+@login_required
 def home(request):
     logged_in_user = request.user.userprofile
     you = logged_in_user.user
@@ -48,3 +48,17 @@ def edit_profile(request):
         'p_form': p_form,
     }
     return render(request, 'Profile/edit_profile.html', context)
+
+
+@login_required
+def search_for(request):
+    query = request.GET.get('q')
+    possible_users = User.objects.all()
+    possible_courses = Course.objects.all()
+    context = {
+        'users': possible_users,
+        'courses': possible_courses
+    }
+
+    return render(request, 'Profile/search.html', context)
+

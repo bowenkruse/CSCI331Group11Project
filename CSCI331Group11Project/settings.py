@@ -15,6 +15,7 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 import Profile.apps
+import course.apps
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     # added by me
     'Profile.apps.ProfileConfig',
     'crispy_forms',
+    'course.apps.CourseConfig'
 ]
 
 MIDDLEWARE = [
