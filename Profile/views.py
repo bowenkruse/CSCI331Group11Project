@@ -12,15 +12,8 @@ User = get_user_model()
 def home(request):
     logged_in_user = request.user.userprofile
     you = logged_in_user.user
-    gpa = logged_in_user.gpa
-    rating = logged_in_user.rating
-    bio = logged_in_user.bio
-
     context = {
         'u': you,
-        'g': gpa,
-        'r': rating,
-        'b': bio
     }
     return render(request, "Profile/profile.html", context)
 
@@ -41,14 +34,15 @@ def register(request):
 def edit_profile(request):
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
-        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.userprofile)
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
-            return redirect('my_profile')
+
+            return redirect('home')
     else:
         u_form = UserUpdateForm(instance=request.user)
-        p_form = ProfileUpdateForm(instance=request.user.profile)
+        p_form = ProfileUpdateForm(instance=request.user.userprofile)
     context = {
         'u_form': u_form,
         'p_form': p_form,
