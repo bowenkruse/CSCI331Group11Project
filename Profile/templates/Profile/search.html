@@ -1,3 +1,4 @@
+{% load static %}
 {% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
 <!DOCTYPE html>
@@ -5,10 +6,13 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static "main.js" %}"></script>
     <title>Search</title>
 </head>
 <body>
+
+{# nav bar #}
 <nav class="navbar bg-light">
   <ul class="navbar-nav">
     <li class="nav-item">
@@ -19,18 +23,16 @@
     </li>
   </ul>
 </nav>
-<h3>Search</h3>
-<p>right now this just lists all users but we can filter for what user search's for</p>
-{% block results %}
-<div>
-    {% for u in users %}
-        <h3>{{ u}}</h3>
-    {% endfor %}
-    {% for c in courses %}
-        <h3>{{ c }}</h3>
-    {% endfor %}
 
+{# actual search box #}
+<div class="col-6 align-left">
+    <i id="search-icon" class="fas fa-search"></i>
+    <input id="user-input" placeholder="What are you looking for?">
 </div>
-{% endblock results %}
+
+  {# artist-list section #}
+  <div id="replaceable-content" class="col-6">
+    {% include 'Profile/artists-results-partial.html' %}
+  </div>
 </body>
 </html>

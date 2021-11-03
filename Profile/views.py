@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from course.models import Course
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from django.template.loader import render_to_string
+from django.http import JsonResponse
 
 User = get_user_model()
 
@@ -23,7 +25,6 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username')
             return redirect('login')
     else:
         form = UserRegisterForm()
@@ -53,12 +54,26 @@ def edit_profile(request):
 @login_required
 def search_for(request):
     query = request.GET.get('q')
-    possible_users = User.objects.all()
-    possible_courses = Course.objects.all()
+    print(query)
+    if query:
+        possible_courses = Course.objects.filter(title__unaccent__icontains=query)
+        possible_users = Course.objects.filter(userprofile__user__username__unaccent__icontains=query)
+    else:
+        possible_courses = None
+        possible_users = None
+
     context = {
-        'users': possible_users,
-        'courses': possible_courses
+        'courses': possible_courses,
+        'users': possible_users
     }
 
-    return render(request, 'Profile/search.html', context)
+    if request.is_ajax():
+        html = render_to_string(
+            template_name="Profile/artists-results-partial.html",
+            context={"courses": possible_courses,
+                     "users": possible_users}
+        )
+        data_dict = {"html_from_view": html}
+        return JsonResponse(data=data_dict, safe=False)
 
+    return render(request, 'Profile/search.html', context)
