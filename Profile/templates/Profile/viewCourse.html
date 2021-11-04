@@ -9,6 +9,10 @@
     <p>{{ singleCourse.description }}</p>
     <h2>TODO: Add functionality to add this course</h2>
 
+    <form action="{% url 'addcourse' %}" method="get">
+        <input type="hidden" name="w" value="{{ singleCourse.title }}">
+        <button type="submit" class="btn btn-primary">Add this course</button>
+    </form>
 {% endfor %}
 </body>
 </html>

@@ -29,7 +29,8 @@ urlpatterns = [
     path('editprofile/', profile_views.edit_profile, name='editprofile'),
     path('search/', profile_views.search_for, name='search'),
     path('viewuser/', profile_views.view_profile, name='viewuser'),
-    path('viewcourse/', profile_views.view_course, name='viewcourse')
+    path('viewcourse/', profile_views.view_course, name='viewcourse'),
+    path('addcourse/', profile_views.add_course, name='addcourse'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

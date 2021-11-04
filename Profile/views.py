@@ -1,11 +1,12 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, AddCourseForm
 from django.template.loader import render_to_string
 from django.http import JsonResponse
 from django.views.generic import ListView
 from .models import UserProfile
+from django.http import HttpResponse
 from course.models import Course
 
 User = get_user_model()
@@ -86,9 +87,7 @@ def search_for(request):
 @login_required
 def view_profile(request):
     query = request.GET.get('q', None)
-    print(query)
     all_profiles = UserProfile.objects.all()
-    print(all_profiles)
     if query:
         possible_profile = all_profiles.filter(slug__exact=query)
     else:
@@ -96,6 +95,7 @@ def view_profile(request):
     context = {
         'selectedUser': possible_profile
     }
+
     return render(request, 'Profile/viewUser.html', context)
 
 
@@ -108,6 +108,22 @@ def view_course(request):
     else:
         possible_course = None
     context = {
-        'selectedCourse': possible_course
+        'selectedCourse': possible_course,
+        'form': AddCourseForm()
     }
+
     return render(request, 'Profile/viewCourse.html', context)
+
+
+def add_course(request):
+    query = request.GET.get('w')
+    current_user = request.user.userprofile
+    print(current_user)
+    selected_course = Course.objects.get(title=query)
+    print(selected_course, type(selected_course))
+    current_user.courses.add(selected_course)
+    current_user.save()
+    print(current_user.courses.all())
+
+    return HttpResponse("Success")
+
