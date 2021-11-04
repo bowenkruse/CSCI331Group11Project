@@ -1,0 +1,30 @@
+{% load static %}
+<script type="text/javascript" src="{% static "main.js" %}"></script>
+<script src="https://unpkg.com/htmx.org@1.6.0"></script>
+
+{% if users or courses %}
+    {% for thisUser in users %}
+        <form action="{% url 'viewuser' %}" method="get">
+            <input type="hidden" name="q" value="{{ thisUser.slug }}">
+            <button type="submit" class="btn btn-primary">{{ thisUser.name }}</button>
+        </form>
+    {% endfor %}
+    {% for course in courses %}
+        <form action="{% url 'viewcourse' %}" method="get">
+            <input type="hidden" name="q" value="{{ course.title }}">
+            <button type="submit" class="btn btn-primary">{{ course.title }}</button>
+        </form>
+    {% endfor %}
+
+{% endif %}
+
+<script>
+    function goToUser(user) {
+
+    }
+
+    function goToCourse(user) {
+
+    }
+
+</script>

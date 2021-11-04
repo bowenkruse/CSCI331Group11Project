@@ -1,0 +1,14 @@
+<html lang="en">
+<head>
+    <title> Search </title>
+</head>
+<body>
+{# there's only one user but need loop to acess inside of django query#}
+{% for singleCourse in selectedCourse %}
+    <h3>{{ singleCourse.title }}</h3>
+    <p>{{ singleCourse.description }}</p>
+    <h2>TODO: Add functionality to add this course</h2>
+
+{% endfor %}
+</body>
+</html>

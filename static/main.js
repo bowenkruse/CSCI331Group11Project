@@ -1,8 +1,10 @@
 const user_input = $("#user-input")
 const search_icon = $('#search-icon')
 const artists_div = $('#replaceable-content')
+// for selecting course or user from search results
+
 const endpoint = '/search/'
-const delay_by_in_ms = 700
+const delay_by_in_ms = 20
 let scheduled_function = false
 
 let ajax_call = function (endpoint, request_parameters) {
@@ -13,7 +15,7 @@ let ajax_call = function (endpoint, request_parameters) {
 				// replace the HTML contents
 				artists_div.html(response['html_from_view'])
 				// fade-in the div with new contents
-				artists_div.fadeTo('slow', 1)
+				artists_div.fadeTo('slow', 0.2)
 				// stop animating search icon
 				search_icon.removeClass('blink')
 			})

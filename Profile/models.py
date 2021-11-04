@@ -8,13 +8,13 @@ from course.models import Course
 # Create your models here.
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, default='Your name')
     image = models.ImageField(default='default.jpg', upload_to='profile_images', null=True, blank=True)
     gpa = models.FloatField(default=4.0)
     rating = models.FloatField(default=5.0, editable=False)
     slug = AutoSlugField(populate_from='user')
     bio = models.CharField(max_length=255, blank=True, help_text="Tell us something about you")
     courses = models.ManyToManyField(Course)
-    # todo put relationship with course app in here?
 
     def __str__(self):
         return self.user.username

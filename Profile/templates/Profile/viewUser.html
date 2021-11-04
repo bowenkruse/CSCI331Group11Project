@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+    <title> Search </title>
+</head>
+<body>
+{# there's only one user but need loop to acess inside of django query#}
+{% for singleUser in selectedUser %}
+    <div class="card-profile-image">
+        <img src="{{ singleUser.image.url }}" class="rounded-circle" width="160px" height="160px"
+             alt="User Profile Picture"/>
+    </div>
+    <h3>Username: {{ singleUser }}</h3>
+    <h3>Name: {{ singleUser.name }}</h3>
+    <h3>GPA: {{ singleUser.gpa }}</h3>
+    <h3>Rating: {{ singleUser.rating }}</h3>
+    <h3>Bio: {{ singleUser.bio }}</h3>
+    <h2>TODO: Add functionality to rate this user</h2>
+
+{% endfor %}
+</body>
+</html>

@@ -1,10 +1,12 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from course.models import Course
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.template.loader import render_to_string
 from django.http import JsonResponse
+from django.views.generic import ListView
+from .models import UserProfile
+from course.models import Course
 
 User = get_user_model()
 
@@ -53,27 +55,59 @@ def edit_profile(request):
 
 @login_required
 def search_for(request):
-    query = request.GET.get('q')
-    print(query)
+    query = request.GET.get('q', None)
+    all_courses = Course.objects.all()
+    all_profiles = UserProfile.objects.all()
     if query:
-        possible_courses = Course.objects.filter(title__unaccent__icontains=query)
-        possible_users = Course.objects.filter(userprofile__user__username__unaccent__icontains=query)
+        possible_courses = all_courses.filter(title__icontains=query)
+        possible_profiles = all_profiles.filter(name__icontains=query)
+
     else:
         possible_courses = None
-        possible_users = None
+        possible_profiles = None
 
     context = {
         'courses': possible_courses,
-        'users': possible_users
+        'users': possible_profiles
     }
 
     if request.is_ajax():
         html = render_to_string(
-            template_name="Profile/artists-results-partial.html",
+            template_name="Profile/search-results-partial.html",
             context={"courses": possible_courses,
-                     "users": possible_users}
+                     "users": possible_profiles}
         )
         data_dict = {"html_from_view": html}
         return JsonResponse(data=data_dict, safe=False)
 
     return render(request, 'Profile/search.html', context)
+
+
+@login_required
+def view_profile(request):
+    query = request.GET.get('q', None)
+    print(query)
+    all_profiles = UserProfile.objects.all()
+    print(all_profiles)
+    if query:
+        possible_profile = all_profiles.filter(slug__exact=query)
+    else:
+        possible_profile = None
+    context = {
+        'selectedUser': possible_profile
+    }
+    return render(request, 'Profile/viewUser.html', context)
+
+
+@login_required
+def view_course(request):
+    query = request.GET.get('q', None)
+    all_courses = Course.objects.all()
+    if query:
+        possible_course = all_courses.filter(title__exact=query)
+    else:
+        possible_course = None
+    context = {
+        'selectedCourse': possible_course
+    }
+    return render(request, 'Profile/viewCourse.html', context)

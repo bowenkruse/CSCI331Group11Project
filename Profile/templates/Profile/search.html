@@ -5,23 +5,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{% static "main.js" %}"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <title>Search</title>
 </head>
 <body>
 
 {# nav bar #}
 <nav class="navbar bg-light">
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="{% url 'home' %}">Profile</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Search</a>
-    </li>
-  </ul>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Search</a>
+        </li>
+    </ul>
 </nav>
 
 {# actual search box #}
@@ -30,9 +31,12 @@
     <input id="user-input" placeholder="What are you looking for?">
 </div>
 
-  {# artist-list section #}
-  <div id="replaceable-content" class="col-6">
-    {% include 'Profile/artists-results-partial.html' %}
-  </div>
+{# artist-list section #}
+<div id="replaceable-content" class="col-6">
+    {% include 'Profile/search-results-partial.html' %}
+</div>
+<script type="text/javascript" src="{% static "main.js" %}"></script>
+
+<div id="selection-results" class="card-body"></div>
 </body>
 </html>
