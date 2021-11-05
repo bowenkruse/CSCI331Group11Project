@@ -4,9 +4,8 @@ from django.shortcuts import render, redirect
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, AddCourseForm
 from django.template.loader import render_to_string
 from django.http import JsonResponse
-from django.views.generic import ListView
 from .models import UserProfile
-from django.http import HttpResponse
+from django.contrib import messages
 from course.models import Course
 
 User = get_user_model()
@@ -101,29 +100,29 @@ def view_profile(request):
 
 @login_required
 def view_course(request):
-    query = request.GET.get('q', None)
-    all_courses = Course.objects.all()
-    if query:
-        possible_course = all_courses.filter(title__exact=query)
-    else:
-        possible_course = None
-    context = {
-        'selectedCourse': possible_course,
-        'form': AddCourseForm()
-    }
+    if 'q' in request.GET:
+        query = request.GET.get('q', None)
+        all_courses = Course.objects.all()
+        if query:
+            possible_course = all_courses.filter(title__exact=query)
+        else:
+            possible_course = None
+        context = {
+            'selectedCourse': possible_course,
+            'form': AddCourseForm()
+        }
 
-    return render(request, 'Profile/viewCourse.html', context)
+        return render(request, 'Profile/viewCourse.html', context)
 
 
+@login_required
 def add_course(request):
     query = request.GET.get('w')
     current_user = request.user.userprofile
-    print(current_user)
     selected_course = Course.objects.get(title=query)
-    print(selected_course, type(selected_course))
     current_user.courses.add(selected_course)
     current_user.save()
-    print(current_user.courses.all())
+    messages.success(request, "Course successfully added")
+    return redirect('search')
 
-    return HttpResponse("Success")
 

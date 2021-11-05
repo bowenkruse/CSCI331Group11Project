@@ -15,7 +15,7 @@ let ajax_call = function (endpoint, request_parameters) {
 				// replace the HTML contents
 				artists_div.html(response['html_from_view'])
 				// fade-in the div with new contents
-				artists_div.fadeTo('slow', 0.2)
+				artists_div.fadeTo('slow', 0.9)
 				// stop animating search icon
 				search_icon.removeClass('blink')
 			})
