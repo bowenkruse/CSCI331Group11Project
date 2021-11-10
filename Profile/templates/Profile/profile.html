@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Your profile</title>
+</head>
+<body>
+<nav class="navbar bg-light">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'home' %}">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href=" {% url 'search' %}">Search</a>
+    </li>
+  </ul>
+</nav>
+
+<h2>This is your profile:</h2>
+
+<div class="card-profile-image">
+    <img src="{{ u.userprofile.image.url }}" class="rounded-circle" width="160px" height="160px" alt="User Profile Picture"/>
+</div>
+
+<h3>Username: {{ u }}</h3>
+<h3>Name: {{ u.userprofile.name }}</h3>
+<h3>gpa: {{ u.userprofile.gpa }}</h3>
+<h3>rating: {{ u.userprofile.rating }}</h3>
+<h3>bio: {{ u.userprofile.bio }}</h3>
+<h3>Courses: {{ u.userprofile.courses }}</h3>
+<a class="btn btn-primary" href="{% url 'editprofile' %}">Edit Profile</a>
+<a class="btn btn-primary" href="{% url 'logout' %}">Log out</a>
+
+</body>
+</html>
