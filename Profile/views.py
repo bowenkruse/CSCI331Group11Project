@@ -7,6 +7,7 @@ from django.http import JsonResponse
 from .models import UserProfile
 from django.contrib import messages
 from course.models import Course
+from django.views.decorators.csrf import csrf_exempt
 
 User = get_user_model()
 
@@ -125,4 +126,15 @@ def add_course(request):
     messages.success(request, "Course successfully added")
     return redirect('search')
 
+
+@csrf_exempt
+def apply_rating(request):
+    rating = request.POST.get('given_rating', None)
+    rated_user = request.POST.get('rated_user', None)
+    print(rated_user)
+    print(rating)
+    data = {
+        'rating': rating
+    }
+    return JsonResponse(data)
 
