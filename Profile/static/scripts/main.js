@@ -4,15 +4,12 @@ $("#rating").submit(function (event) {
     event.preventDefault();
     apply_rating(val, user_to_rate);
 });
-
 function openForm() {
     document.getElementById('ratingForm').style.display = "block";
 }
-
 function closeForm() {
     document.getElementById('ratingForm').style.display = "none";
 }
-
 function apply_rating(val, user_to_rate) {
     $.ajax({
         url: "/ajax/apply_rating/",
@@ -26,6 +23,7 @@ function apply_rating(val, user_to_rate) {
             closeForm();
             console.log('success!')
             alert("Rating submitted successfully")
+            document.getElementById('ratingHeading').innerHTML = "<h3>gpa: " + val + "</h3>"
         },
         error : function () {
             closeForm();

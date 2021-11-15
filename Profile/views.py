@@ -62,16 +62,13 @@ def search_for(request):
     if query:
         possible_courses = all_courses.filter(title__icontains=query)
         possible_profiles = all_profiles.filter(name__icontains=query)
-
     else:
         possible_courses = None
         possible_profiles = None
-
     context = {
         'courses': possible_courses,
         'users': possible_profiles
     }
-
     if request.is_ajax():
         html = render_to_string(
             template_name="Profile/search-results-partial.html",
@@ -80,7 +77,6 @@ def search_for(request):
         )
         data_dict = {"html_from_view": html}
         return JsonResponse(data=data_dict, safe=False)
-
     return render(request, 'Profile/search.html', context)
 
 
@@ -112,7 +108,6 @@ def view_course(request):
             'selectedCourse': possible_course,
             'form': AddCourseForm()
         }
-
         return render(request, 'Profile/viewCourse.html', context)
 
 
@@ -129,12 +124,13 @@ def add_course(request):
 
 @csrf_exempt
 def apply_rating(request):
-    rating = request.POST.get('given_rating', None)
+    rating = int(request.POST.get('given_rating', None))
     rated_user = request.POST.get('rated_user', None)
-    print(rated_user)
-    print(rating)
+    rated_user_object = UserProfile.objects.get(slug__exact=rated_user)
+    current_rating = rated_user_object.rating
+    rated_user_object.rating = (current_rating + rating) / 2
+    print(rated_user_object.rating)
     data = {
         'rating': rating
     }
     return JsonResponse(data)
-
