@@ -83,6 +83,20 @@
     </style>
 </head>
 <body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <ul class=" nav navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=" {% url 'search' %}">Search</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
 {# there's only one user but need loop to acess inside of django query#}
 {% for singleUser in selectedUser %}
     <div class="card-profile-image">
@@ -92,8 +106,9 @@
     <h3>Username: {{ singleUser }}</h3>
     <h3>Name: {{ singleUser.name }}</h3>
     <h3>GPA: {{ singleUser.gpa }}</h3>
-    <h3 id="ratingHeading">Rating: {{ singleUser.rating }}</h3>
-    <h3>Bio: {{ singleUser.bio }}</h3>
+    <h3 id="ratingHeading">Community Rating: {{ singleUser.rating }}</h3>
+    <h3>Biography: {{ singleUser.bio }}</h3>
+    <h3>Courses: {{ singleUser.get_courses }}</h3>
 
     <button class="btn btn-primary" onclick="openForm()">Rate {{ singleUser.name }}</button>
 

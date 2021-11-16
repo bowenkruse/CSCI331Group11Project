@@ -22,6 +22,9 @@ class UserProfile(models.Model):
     def get_absolute_url(self):
         return "/Profile/{}".format(self.slug)
 
+    def get_courses(self):
+        return ", ".join([cors.title for cors in self.courses.all()])
+
 
 def create_profile(sender, **kwargs):
     if kwargs['created']:

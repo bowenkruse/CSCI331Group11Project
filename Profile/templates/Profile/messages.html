@@ -24,12 +24,16 @@
         </li>
     </ul>
 </nav>
+<div class="card-profile-image">
+    <img src="{{ recipient.image.url }}" class="rounded-circle" width="160px" height="160px"
+         alt="User Profile Picture"/>
+</div>
 <h1>Messaging {{ recipient.name }}</h1>
 <form action='' id="usrform">
 
 </form>
 <br>
-<textarea rows="4" cols="50" name="comment" form="usrform"></textarea>
+<textarea rows="2" cols="50" name="comment" form="usrform"></textarea>
 <button type="submit" form="usrform" class="btn btn-primary">Send</button>
 </body>
 </html>
