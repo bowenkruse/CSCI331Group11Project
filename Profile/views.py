@@ -128,9 +128,11 @@ def apply_rating(request):
     rated_user = request.POST.get('rated_user', None)
     rated_user_object = UserProfile.objects.get(slug__exact=rated_user)
     current_rating = rated_user_object.rating
-    rated_user_object.rating = (current_rating + rating) / 2
+    new_rating = (current_rating + rating) / 2
+    rated_user_object.rating = new_rating
+    rated_user_object.save()
     print(rated_user_object.rating)
     data = {
-        'rating': rating
+        'rating': new_rating
     }
     return JsonResponse(data)

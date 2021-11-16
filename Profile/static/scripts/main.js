@@ -22,8 +22,9 @@ function apply_rating(val, user_to_rate) {
         success : function (json) {
             closeForm();
             console.log('success!')
+            console.log(json['rating'])
             alert("Rating submitted successfully")
-            document.getElementById('ratingHeading').innerHTML = "<h3>gpa: " + val + "</h3>"
+            document.getElementById('ratingHeading').innerText = "Rating: " + json['rating']
         },
         error : function () {
             closeForm();
