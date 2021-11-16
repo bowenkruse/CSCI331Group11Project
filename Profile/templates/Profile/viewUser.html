@@ -94,7 +94,14 @@
     <h3>GPA: {{ singleUser.gpa }}</h3>
     <h3 id="ratingHeading">Rating: {{ singleUser.rating }}</h3>
     <h3>Bio: {{ singleUser.bio }}</h3>
-    <button class="btn btn-primary" onclick="openForm()">Rate this user</button>
+
+    <button class="btn btn-primary" onclick="openForm()">Rate {{ singleUser.name }}</button>
+
+    <form action="{% url 'message_user' %}" method="get">
+        <input type="hidden" name="to_message" value="{{ singleUser }}">
+        <button type="submit" class="btn btn-primary">Message user</button>
+    </form>
+
     <div class="form-popup" id="ratingForm">
         <form action="" class="form-container" id="rating">
             <input type="hidden" id="user_viewed" value="{{ singleUser }}">

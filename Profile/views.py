@@ -126,7 +126,7 @@ def add_course(request):
 def apply_rating(request):
     rating = int(request.POST.get('given_rating', None))
     rated_user = request.POST.get('rated_user', None)
-    rated_user_object = UserProfile.objects.get(slug__exact=rated_user)
+    rated_user_object = UserProfile.objects.get(user__username__exact=rated_user)
     current_rating = rated_user_object.rating
     new_rating = (current_rating + rating) / 2
     rated_user_object.rating = new_rating
@@ -136,3 +136,14 @@ def apply_rating(request):
         'rating': new_rating
     }
     return JsonResponse(data)
+
+
+@csrf_exempt
+def message_user(request):
+    recipient = request.GET.get('to_message')
+    print(recipient)
+    recipient_user_object = UserProfile.objects.get(user__username__exact=recipient)
+    context = {
+        'recipient': recipient_user_object
+    }
+    return render(request, 'Profile/messages.html', context)
