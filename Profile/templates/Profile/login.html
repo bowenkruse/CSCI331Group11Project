@@ -4,22 +4,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="../../static/styles/style.css">
+    {#    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">#}
     <title>Login</title>
 </head>
+
+
 <body>
-<h3>Sign in</h3>
-<hr>
 
-<form action="" method="POST">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type="submit" class="btn btn-primary">Sign me in!</button>
-</form>
-<h4>Not a member? Sign up</h4>
-<a class="btn btn-primary" href="{% url 'register' %}">Go to registration</a>
+<div class="login-picture1">
+    <img src="../media/logo/BlueSide.png" class="rounded-circle"
+         alt="background"/>
+{#    height="100% of window" width="50% of window"#}
+</div>
 
+<div class="login-picture2">
+    <img src="../media/logo/lilsquares.png" class="rounded-circle"
+         alt="background"/>
+{#    height="100% of window" width="50% of window"#}
+</div>
+
+
+<div id="background">
+    <h3>Login</h3>
+    <hr>
+
+    <div class="form-group">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            <div id="buttonArea">
+                <button type="submit" class="btn btn-primary">Login</button>
+                <h4 class="signup">Need an Account?<a href="{% url 'register' %}"> Sign up</a></h4>
+            </div>
+
+        </form>
+
+    </div>
+</div>
 
 </body>
 </html>

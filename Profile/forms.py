@@ -11,6 +11,13 @@ class UserRegisterForm(UserCreationForm):
 		model = User
 		fields = ['username', 'name', 'password1', 'password2']
 
+		widget = {
+			'username': forms.TextInput(attrs={'class': 'form-control'}),
+			'name': forms.TextInput(attrs={'class': 'form-control'}),
+			'password1': forms.TextInput(attrs={'class': 'form-control'}),
+			'password2': forms.TextInput(attrs={'class': 'form-control'}),
+
+		}
 
 class UserUpdateForm(forms.ModelForm):
 	class Meta:
@@ -28,3 +35,5 @@ class AddCourseForm(forms.ModelForm):
 	class Meta:
 		model = UserProfile
 		fields = ['courses']
+
+

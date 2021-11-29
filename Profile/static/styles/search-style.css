@@ -3,7 +3,7 @@ body {
     font-family: -webkit-pictograph;
 }
 
-a {
+a{
     text-decoration: none;
     color: black;
 }
@@ -18,7 +18,7 @@ a {
 
 #background {
     align-items: center;
-    margin: -66vh 0vw 0vh 69vw;
+    margin: 7vh 0vw 0vh 60vw;
     /* position: relative; */
     width: 365px;
     /* background-color: #707070; */
@@ -31,18 +31,9 @@ a {
     border-radius: 5px;
 }
 
-.btn-primary {
+.btn, btn-primary {
     background-color: blue;
-    width: 172px;
-    height: 29px;
-    border: none;
-    border-radius: 30px;
-    color: white;
-}
-
-.btn, .btn-profile {
-    background-color: blue;
-    width: 172px;
+    width: 400px;
     height: 29px;
     border: none;
     border-radius: 30px;
@@ -55,7 +46,6 @@ a {
 
 .signup {
     font-size: 12px;
-    margin: 0vh 0vw 0vh 1vw;
 }
 
 #buttonArea {
@@ -77,12 +67,28 @@ a {
     background-color: #2699fb;
     width: 100vw;
     height: 80px;
-    margin: -4vh -3vw 0vh -1vw;
+    margin: -4vh -3vw 6vh -1vw;
+}
+
+.navbar2 {
+    background-color: #2699fb;
+    width: 100vw;
+    height: 80px;
+    margin: -1.25vh -3vw 1vh -1vw;
 }
 
 .nav-item {
     width: 216px;
-    margin: 2vh 0vw 0vh 0vw;
+    margin: 2vh 0vw .5vh 0vw;
+    background-color: #2699fb;
+    text-align: center;
+    border-radius: 5px;
+    padding-top: 12px;
+}
+
+.nav-item1 {
+    width: 216px;
+    margin: 2vh 0vw .5vh 0vw;
     background-color: #2699fb;
     text-align: center;
     border-radius: 5px;
@@ -104,9 +110,6 @@ a {
     list-style: none;
 }
 
-.nav-logo {
-}
-
 .item-list {
     display: flex;
     margin-left: auto;
@@ -118,7 +121,7 @@ a {
 }
 
 .searchBox {
-    margin: 7vh 12vw 17vh 12vw;
+    margin: 80px 220px 100px 220px;
     background-color: lightgrey;
     height: 400px;
     border-radius: 5px;
@@ -130,12 +133,14 @@ a {
     width: 400px
 }
 
-::placeholder {
+::placeholder{
     text-align: center;
 }
 
 #search-search {
-
+    height: 58px;
+    padding-top: 60px;
+    padding-left: 250px;
 }
 
 #search-info {
@@ -146,51 +151,6 @@ a {
 }
 
 #replaceable-content {
-
+    margin: 0vh 0vw 0vh 15.5vw;
 }
 
-.viewUser-rateButton {
-    background-color: blue;
-    width: 172px;
-    height: 29px;
-    border: none;
-    border-radius: 30px;
-    color: white;
-    margin: 30px;
-}
-
-.ratebuttons {
-    color: black;
-}
-
-.profile-stuff {
-    margin: 9vh 34vw 0vh 7vw;
-}
-
-.profile-buttons {
-    margin: inherit
-}
-
-#hint_id_username {
-    font-size: initial;
-}
-
-#hint_id_bio {
-    font-size: initial;
-}
-
-#div_id_image {
-    font-size: initial;
-}
-
-.login-picture1 {
-    width: 50vw;
-    height: 100vh;
-    margin: -2vh 0vw 0vh -1vw;
-}
-
-.login-picture2 {
-    width: 50vw;
-    height: 100vh;
-    margin: -108vh 0vw 0vh -2vw;
-}
