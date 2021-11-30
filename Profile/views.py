@@ -7,6 +7,7 @@ from django.http import JsonResponse
 from .models import UserProfile
 from django.contrib import messages
 from course.models import Course
+from django.views.decorators.csrf import csrf_exempt
 
 User = get_user_model()
 
@@ -61,16 +62,13 @@ def search_for(request):
     if query:
         possible_courses = all_courses.filter(title__icontains=query)
         possible_profiles = all_profiles.filter(name__icontains=query)
-
     else:
         possible_courses = None
         possible_profiles = None
-
     context = {
         'courses': possible_courses,
         'users': possible_profiles
     }
-
     if request.is_ajax():
         html = render_to_string(
             template_name="Profile/search-results-partial.html",
@@ -79,7 +77,6 @@ def search_for(request):
         )
         data_dict = {"html_from_view": html}
         return JsonResponse(data=data_dict, safe=False)
-
     return render(request, 'Profile/search.html', context)
 
 
@@ -111,7 +108,6 @@ def view_course(request):
             'selectedCourse': possible_course,
             'form': AddCourseForm()
         }
-
         return render(request, 'Profile/viewCourse.html', context)
 
 
@@ -126,3 +122,28 @@ def add_course(request):
     return redirect('search')
 
 
+@csrf_exempt
+def apply_rating(request):
+    rating = int(request.POST.get('given_rating', None))
+    rated_user = request.POST.get('rated_user', None)
+    rated_user_object = UserProfile.objects.get(user__username__exact=rated_user)
+    current_rating = rated_user_object.rating
+    new_rating = (current_rating + rating) / 2
+    rated_user_object.rating = new_rating
+    rated_user_object.save()
+    print(rated_user_object.rating)
+    data = {
+        'rating': new_rating
+    }
+    return JsonResponse(data)
+
+
+@csrf_exempt
+def message_user(request):
+    recipient = request.GET.get('to_message')
+    print(recipient)
+    recipient_user_object = UserProfile.objects.get(user__username__exact=recipient)
+    context = {
+        'recipient': recipient_user_object
+    }
+    return render(request, 'Profile/messages.html', context)

@@ -31,6 +31,8 @@ urlpatterns = [
     path('viewuser/', profile_views.view_profile, name='viewuser'),
     path('viewcourse/', profile_views.view_course, name='viewcourse'),
     path('addcourse/', profile_views.add_course, name='addcourse'),
+    path('ajax/apply_rating/', profile_views.apply_rating, name='apply_rating'),
+    path('messages/', profile_views.message_user, name='message_user')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
