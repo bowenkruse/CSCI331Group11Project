@@ -4,20 +4,79 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    {#    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">#}
+        <link rel="stylesheet" href="../../static/styles/register-style.css">
     <title>Sign Up</title>
-</head>
-<>
-<h3>Sign Up</h3>
 
-<form action="" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Sign Up</button>
-</form>
-<br>
-<h4>Already a member? <a class="" href="{% url 'login' %}"> Login</a></h4>
+    <style>
+        .signup-picture1 {
+            width: 50vw;
+            height: 100vh;
+            {#margin: -2vh 0vw 0vh 35vw;#}
+            margin: -2vh 0vw 0vh -1vw;
+        }
+
+        .signup-picture2 {
+            width: 50vw;
+            height: 100vh;
+            {#margin: -108vh 0vw 0vh 33vw;#}
+            margin: -108vh 0vw 0vh -2vw;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="signup-picture1">
+    <img src="../media/logo/BlueSide.png" class="rounded-circle"
+         alt="background"/>
+    {#    height="100% of window" width="50% of window"#}
+</div>
+
+<div class="signup-picture2">
+    <img src="../media/logo/lilsquares.png" class="rounded-circle"
+         alt="background"/>
+    {#    height="100% of window" width="50% of window"#}
+</div>
+
+<div id="register-background">
+    <h3>Sign Up</h3>
+    <hr>
+
+    <div class="form-group">
+        <form action="" method="POST">
+            {% csrf_token %}
+{#            {{ form.as_p }}#}
+            {{ form|crispy }}
+
+            <br>
+            <div id="buttonArea">
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+                <h4 class="signup">Already a member? <a href="{% url 'login' %}"> Login</a></h4>
+            </div>
+        </form>
+    </div>
+</div>
+
+{#<div id="background">#}
+{#    <h3>Login</h3>#}
+{#    <hr>#}
+{##}
+{#    <div class="form-group">#}
+{#        <form action="" method="POST">#}
+{#            {% csrf_token %}#}
+{#            {{ form|crispy }}#}
+{##}
+{#            <div id="buttonArea">#}
+{#                <button type="submit" class="btn btn-primary">Login</button>#}
+{#                <h4 class="signup">Need an Account?<a href="{% url 'register' %}"> Sign up</a></h4>#}
+{#            </div>#}
+{##}
+{#        </form>#}
+{##}
+{#    </div>#}
+{#</div>#}
+
 
 </body>
 </html>

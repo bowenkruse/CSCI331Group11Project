@@ -13,7 +13,7 @@ a {
 }
 
 .form-group {
-
+    font-size: small;
 }
 
 #background {
@@ -27,7 +27,7 @@ a {
 
 #register-background {
     align-items: center;
-    margin: -66vh 0vw 0vh 69vw;
+    margin: -80vh 0vw 0vh 69vw;
     /* position: relative; */
     width: 365px;
     /* background-color: #707070; */
@@ -204,10 +204,10 @@ a {
     margin: -108vh 0vw 0vh -2vw;
 }
 
-.helptext {
-    font-size: x-small;
-}
+/*.helptext {*/
+/*    font-size: x-small;*/
+/*}*/
 
-.bio {
-    color: gray;
-}
+/*ul {*/
+/*    font-size: x-small;*/
+/*}*/

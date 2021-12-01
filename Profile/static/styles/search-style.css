@@ -65,14 +65,14 @@ a{
 
 .navbar {
     background-color: #2699fb;
-    width: 100vw;
+    width: 100.4vw;
     height: 80px;
     margin: -4vh -3vw 6vh -1vw;
 }
 
 .navbar2 {
     background-color: #2699fb;
-    width: 100vw;
+    width: 100.4vw;
     height: 80px;
     margin: -1.25vh -3vw 1vh -1vw;
 }
@@ -123,12 +123,12 @@ a{
 .searchBox {
     margin: 80px 220px 100px 220px;
     background-color: lightgrey;
-    height: 400px;
+    height: 490px;
     border-radius: 5px;
 }
 
 #user-input {
-    margin: 6vh 0vw 0vh 15vw;
+    margin: 3vh 0vw 0vh 21vw;
     height: 42px;
     width: 400px
 }
@@ -140,17 +140,20 @@ a{
 #search-search {
     height: 58px;
     padding-top: 60px;
-    padding-left: 250px;
+    padding-left: 427px;
 }
 
 #search-info {
     font-size: 19px;
     font-weight: lighter;
     color: grey;
-    margin: 0vh 0vw -3vh 17vw;
+    margin: 0vh 0vw -1vh 23vw;
 }
 
 #replaceable-content {
-    margin: 0vh 0vw 0vh 15.5vw;
+    margin: 0vh 0vw 0vh 21.25vw;
 }
 
+.bio {
+    color: gray;
+}

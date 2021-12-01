@@ -34,9 +34,10 @@
             display: none;
             position: fixed;
             bottom: 0;
-            right: 15px;
+            {#right: 15px;#}
             border: 3px solid #f1f1f1;
             z-index: 9;
+            margin: 0vh 0vw 21vh 27vw;
         }
 
         /* Add styles to the form container */
@@ -51,6 +52,7 @@
             width: 100%;
             padding: 15px;
             margin: 5px 0 22px 0;
+            color: orange;
             border: none;
             background: #f1f1f1;
         }
@@ -124,7 +126,7 @@
 {#    <h3>Username: {{ u }}</h3>#}
     <div class="profileInfo">
         <h1>{{ singleUser.name }}</h1>
-        <p>{{ singleUser.bio }}</p>
+        <p class="bio">{{ singleUser.bio }}</p>
 {#        <h3>gpa: {{ u.userprofile.gpa }}</h3>#}
     </div>
     <h3>This Semester's Classes</h3>
@@ -142,7 +144,7 @@
     <div class="form-popup" id="ratingForm">
         <form action="" class="form-container">
             <div class="range">
-                <input type="range" min="0" max="5">
+                <input type="range" min="0" max="6">
                 <div class="ticks">
                     <!-- You could generate the ticks based on your min, max & step values. -->
                     <span class="tick">0</span>
