@@ -33,9 +33,9 @@
 {% for i in messages_all %}
     {#    if you sent this message, print in one way, else print in another way#}
     {% if i.recipient == recipient %}
-        <p style="background-color: grey; color: white">{{ i.body }} {{ i.timestamp }}</p>
+        <p class="messages-messages">{{ i.body }} {{ i.timestamp }}</p>
     {% else %}
-        <p style="background-color: dodgerblue;color: white">{{ i.body }} {{ i.timestamp }}</p>
+        <p class="messages-messages">{{ i.body }} {{ i.timestamp }}</p>
     {% endif %}
 {% endfor %}
 <form action="" id="new_message">

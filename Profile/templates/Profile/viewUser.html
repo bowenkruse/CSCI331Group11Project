@@ -122,10 +122,12 @@
 
     <h3 id="ratingHeading">Rating: {{ singleUser.rating }}
         <button class="viewUser-rateButton" onclick="openForm()">Rate this user</button>
+        <div class = "viewUser-message">
         <form action="{% url 'message_user' %}" method="get">
             <input type="hidden" name="q" value="{{ singleUser }}">
             <button type="submit" class="viewUser-rateButton">Message user</button>
         </form>
+        </div>
         <div class="form-popup" id="ratingForm">
             <form action="" class="form-container" id="rating">
                 <input type="hidden" id="user_viewed" value="{{ singleUser }}">
