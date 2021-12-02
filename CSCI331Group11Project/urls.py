@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from Profile import views as profile_views
+from Message import views as message_views
 from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
 from django.conf import settings
@@ -32,7 +33,8 @@ urlpatterns = [
     path('viewcourse/', profile_views.view_course, name='viewcourse'),
     path('addcourse/', profile_views.add_course, name='addcourse'),
     path('ajax/apply_rating/', profile_views.apply_rating, name='apply_rating'),
-    path('messages/', profile_views.message_user, name='message_user')
+    path('ajax/send_message/', message_views.send_message, name='send_message'),
+    path('messages/', message_views.message_user, name='message_user')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

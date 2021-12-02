@@ -91,7 +91,6 @@ def view_profile(request):
     context = {
         'selectedUser': possible_profile
     }
-
     return render(request, 'Profile/viewUser.html', context)
 
 
@@ -138,12 +137,3 @@ def apply_rating(request):
     return JsonResponse(data)
 
 
-@csrf_exempt
-def message_user(request):
-    recipient = request.GET.get('to_message')
-    print(recipient)
-    recipient_user_object = UserProfile.objects.get(user__username__exact=recipient)
-    context = {
-        'recipient': recipient_user_object
-    }
-    return render(request, 'Profile/messages.html', context)

@@ -1,39 +1,49 @@
 {% load static %}
-{% load crispy_forms_filters %}
-{% load crispy_forms_tags %}
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../static/styles/search-style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <title>Message</title>
+    <title>Messaging {{ recipient.name }}</title>
 </head>
-<body>
-
-{# nav bar #}
-<nav class="navbar bg-light">
+<body style="text-align: center">
+<nav class="navbar2">
     <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">Profile</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Search</a>
-        </li>
+        <div class="nav-logo">
+            <img src="../media/logo/Logo.png" class="rounded-circle" width="80px" height="80px"
+                 alt="User Profile Picture"/>
+        </div>
+        <div class="item-list">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Profile</a>
+            </li>
+            <li class="nav-item2">
+                <a class="nav-link" href=" {% url 'search' %}">Search</a>
+            </li>
+        </div>
     </ul>
 </nav>
+
 <div class="card-profile-image">
     <img src="{{ recipient.image.url }}" class="rounded-circle" width="160px" height="160px"
          alt="User Profile Picture"/>
 </div>
-<h1>Messaging {{ recipient.name }}</h1>
-<form action='' id="usrform">
 
+<h3>Messaging {{ recipient.name }}</h3>
+{% for i in messages_all %}
+    {#    if you sent this message, print in one way, else print in another way#}
+    {% if i.recipient == recipient %}
+        <p style="background-color: grey; color: white">{{ i.body }} {{ i.timestamp }}</p>
+    {% else %}
+        <p style="background-color: dodgerblue;color: white">{{ i.body }} {{ i.timestamp }}</p>
+    {% endif %}
+{% endfor %}
+<form action="" id="new_message">
+    <input type="hidden" id="recipient" value="{{ recipient }}" name="q">
+    <label for="message_body">New message:</label>
+    <input type="text" id="message_body"><br><br>
+    <button type="submit" class="btn btn-primary">Send</button>
 </form>
-<br>
-<textarea rows="2" cols="50" name="comment" form="usrform"></textarea>
-<button type="submit" form="usrform" class="btn btn-primary">Send</button>
+<script src="{% static 'scripts/message.js' %}"></script>
 </body>
 </html>

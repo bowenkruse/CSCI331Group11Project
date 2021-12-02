@@ -1,25 +1,18 @@
-$("#rating").submit(function (event) {
-    let val = document.getElementById("slider").value;
-    let user_to_rate = document.getElementById('user_viewed').value;
+$("#new_message").submit(function (event) {
     event.preventDefault();
-    apply_rating(val, user_to_rate);
+    let message_content = document.getElementById("message_content").value;
+    console.log(message_content);
+    let user_to_rate = document.getElementById('recipient').value;
+    send_message(message_content, user_to_rate);
 });
 
-function openForm() {
-    document.getElementById('ratingForm').style.display = "block";
-}
-
-function closeForm() {
-    document.getElementById('ratingForm').style.display = "none";
-}
-
-function apply_rating(val, user_to_rate) {
+function send_message(message_content, user_to_message) {
     $.ajax({
         url: "/ajax/apply_rating/",
         type: "POST",
         data: {
-            "given_rating": val,
-            "rated_user": user_to_rate
+            "message_recipient": user_to_message,
+            "message_body": message_content
         },
         dataType: 'json',
         success: function (json) {
@@ -36,4 +29,5 @@ function apply_rating(val, user_to_rate) {
         }
     });
 }
+
 

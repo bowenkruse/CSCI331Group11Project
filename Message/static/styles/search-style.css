@@ -1,0 +1,159 @@
+body {
+    font-size: 30px;
+    font-family: -webkit-pictograph;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.card-profile-image {
+    margin: 6vh 0vw 0vh 8vw;
+}
+
+.form-group {
+
+}
+
+#background {
+    align-items: center;
+    margin: 7vh 0vw 0vh 60vw;
+    /* position: relative; */
+    width: 365px;
+    /* background-color: #707070; */
+    /* border-radius: 30px; */
+}
+
+.profileBackground {
+    border: 3px solid lightgray;
+    margin: 4vh 2vw 3vh 2vw;
+    border-radius: 5px;
+}
+
+.btn, btn-primary {
+    background-color: blue;
+    width: 400px;
+    height: 29px;
+    border: none;
+    border-radius: 30px;
+    color: white;
+}
+
+.requiredField {
+    font-size: 22px;
+}
+
+.signup {
+    font-size: 12px;
+}
+
+#buttonArea {
+    align-items: center;
+    margin: 0vh 0vw 0vh 0vw;
+
+}
+
+.textinput {
+
+    text-decoration: none;
+    padding: 12px 32px;
+    font-size: 15px;
+    border: 1px solid #707070;
+    border-radius: 5px;
+}
+
+.navbar {
+    background-color: #2699fb;
+    width: 100.4vw;
+    height: 80px;
+    margin: -4vh -3vw 6vh -1vw;
+}
+
+.navbar2 {
+    background-color: #2699fb;
+    width: 100.4vw;
+    height: 80px;
+    margin: -1.25vh -3vw 1vh -1vw;
+}
+
+.nav-item {
+    width: 216px;
+    margin: 2vh 0vw .5vh 0vw;
+    background-color: #2699fb;
+    text-align: center;
+    border-radius: 5px;
+    padding-top: 12px;
+}
+
+.nav-item1 {
+    width: 216px;
+    margin: 2vh 0vw .5vh 0vw;
+    background-color: #2699fb;
+    text-align: center;
+    border-radius: 5px;
+    padding-top: 12px;
+}
+
+.nav-item2 {
+    width: 216px;
+    margin: 2vh 0vw 0vh 0vw;
+    background-color: white;
+    text-align: center;
+    border-radius: 5px;
+    padding-top: 12px;
+}
+
+
+.navbar-nav {
+    display: flex;
+    list-style: none;
+}
+
+.item-list {
+    display: flex;
+    margin-left: auto;
+    height: 83px;
+}
+
+.profileInfo {
+    margin: -33vh 0vw 9vh 42vw;
+}
+
+.searchBox {
+    margin: 80px 220px 100px 220px;
+    background-color: lightgrey;
+    height: 490px;
+    border-radius: 5px;
+}
+
+#user-input {
+    margin: 3vh 0vw 0vh 21vw;
+    height: 42px;
+    width: 400px
+}
+
+::placeholder{
+    text-align: center;
+}
+
+#search-search {
+    height: 58px;
+    padding-top: 60px;
+    padding-left: 427px;
+}
+
+#search-info {
+    font-size: 19px;
+    font-weight: lighter;
+    color: grey;
+    margin: 0vh 0vw -1vh 23vw;
+}
+
+#replaceable-content {
+    margin: 0vh 0vw 0vh 21.25vw;
+}
+
+.bio {
+    color: gray;
+}

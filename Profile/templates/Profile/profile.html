@@ -44,7 +44,7 @@
     </div>
     <div class="profile-stuff">
         <h3>This Semester's Classes</h3>
-        <p>{{ u.userprofile.courses }}</p>
+        <p class="bio">{{ u.userprofile.get_courses }}</p>
         <h3>Rating: {{ u.userprofile.rating }}</h3>
     </div>
 

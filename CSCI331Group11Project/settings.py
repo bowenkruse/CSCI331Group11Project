@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     # added by me
     'Profile.apps.ProfileConfig',
     'crispy_forms',
-    'course.apps.CourseConfig'
+    'course.apps.CourseConfig',
+    'Message.apps.MessageConfig'
 ]
 
 MIDDLEWARE = [
